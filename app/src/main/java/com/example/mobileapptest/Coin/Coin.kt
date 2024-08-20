@@ -6,5 +6,6 @@ data class Coin(
     val name:String,
     val image: Image,
     val description: Description,
-    val current_price: Float
+    val current_price: Float,
+    val categories: List<String>
     )

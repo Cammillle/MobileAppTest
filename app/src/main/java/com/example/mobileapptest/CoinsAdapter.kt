@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,7 +16,7 @@ import com.squareup.picasso.Picasso
 import kotlin.math.floor
 
 class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()) {
-
+    private var onClickListener: OnClickListener? = null
 
     class CoinsHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = RecyclerViewItemBinding.bind(view)
@@ -31,10 +32,7 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
                 tvDuration.setTextColor(Color.RED)
             }
             Picasso.get().load(coin.image).into(ImageIcon)
-
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsHolder {
@@ -45,6 +43,18 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
 
     override fun onBindViewHolder(holder: CoinsHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position,getItem(position))
+        }
+
+    }
+
+    fun setOnClickListener(listener:OnClickListener?){
+        this.onClickListener = listener
+    }
+    // Interface for the click listener
+    interface OnClickListener {
+        fun onClick(position: Int, model: CoinList)
     }
 
 

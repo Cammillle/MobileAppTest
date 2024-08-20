@@ -1,5 +1,6 @@
 package com.example.mobileapptest
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileapptest.activities.CoinActivity
 import com.example.mobileapptest.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -38,33 +40,31 @@ class MainActivity : AppCompatActivity() {
         val coinGeckoApi = retrofit.create(CoinGeckoApi::class.java)
         initAdapter()
 
-
-
             CoroutineScope(Dispatchers.IO).launch {
                 //val coin = coinGeckoApi.getCoinById("bitcoin")
                 val listOfCoinsUSD = coinGeckoApi.getAllUsdCoins()
                 val listOfCoinsRUB = coinGeckoApi.getAllRubCoins()
                 runOnUiThread {
                     adapter.submitList(listOfCoinsUSD)
-
-                    binding.chipRub.setOnCheckedChangeListener{chip, isChecked ->
-                        chip.setTextColor(Color.YELLOW)
-                        chip.setBackgroundColor(Color.BLACK)
+                    binding.chipRUB.setOnCheckedChangeListener{chip, isChecked ->
                         adapter.submitList(listOfCoinsRUB)
                     }
-
-
-
-                    binding.chipUsd.setOnClickListener{
+                    binding.chipUSD.setOnClickListener{
                         adapter.submitList(listOfCoinsUSD)
                     }
-
-
-
-
                 }
-
             }
+
+        adapter.setOnClickListener(object: CoinsAdapter.OnClickListener{
+            override fun onClick(position: Int, model: CoinList) {
+                val intent = Intent(this@MainActivity,CoinActivity::class.java)
+                intent.putExtra("id",model.id)
+                startActivity(intent)
+            }
+
+        })
+
+
     }
 
     private fun initAdapter(){

@@ -5,15 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDEBEB"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="16dp"
-        android:background="#FDFDFD"
+        android:layout_width="0dp"
+        android:layout_height="117dp"
+        android:background="#FFFFFF"
+        android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,46 +24,45 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_medium"
             android:text="Список криптовалют"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:selectionRequired="true"
             android:layout_marginStart="16dp"
+            android:layout_marginBottom="13dp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipUsd"
-                style = "@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
+                android:id="@+id/chipUSD"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:checkable="true"
                 android:checked="true"
                 android:text="USD"
                 android:textAlignment="center"
-                app:chipCornerRadius="10dp" />
+                app:chipCornerRadius="15dp" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipRub"
-                style = "@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="90dp"
+                android:id="@+id/chipRUB"
+                android:layout_width="89dp"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:checkable="true"
                 android:text="RUB"
                 android:textAlignment="center"
-                app:chipCornerRadius="10dp" />
+                app:chipCornerRadius="15dp" />
         </com.google.android.material.chip.ChipGroup>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
