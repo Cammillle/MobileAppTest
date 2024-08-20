@@ -10,7 +10,7 @@
 9. Sealed class Resource для обработки запросов сервера: Loading, Success, Mistake (5 минут)
 10. Обьявляем созданные классы в Activities. Дописываем приложение (пару часов?)
 
-<img src="https://github.com/user-attachments/assets/aa1c6504-529d-47ba-be3d-c3374dede64a" width="500">
+<img src="https://github.com/user-attachments/assets/aa1c6504-529d-47ba-be3d-c3374dede64a" width="300">
 
 ![Screenshot_20240821_012640](https://github.com/user-attachments/assets/aa1c6504-529d-47ba-be3d-c3374dede64a)
 ![Screenshot_20240821_012134](https://github.com/user-attachments/assets/b74f1723-a7a9-477f-8c18-0c4fac784aec)
