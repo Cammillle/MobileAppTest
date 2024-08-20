@@ -16,5 +16,8 @@
 <img src="https://github.com/user-attachments/assets/e098f556-8e99-4cc9-aab8-c2d75fe419ae" width="300">
 <img src="https://github.com/user-attachments/assets/920a58c9-26a8-4e2d-91cb-7bff5db6c56a" width="300">
 
+Запрос на сервер происходит после нажатия одного из чипса.
+Из минусов могу отметить: нереализация кнопки "Попробовать снова", Отсутствие иконки рубля в RecyclerView при выборе рубля.
+
 
 
