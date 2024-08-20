@@ -10,7 +10,7 @@ import retrofit2.http.Path
 interface CoinGeckoApi {
 
     @GET("/api/v3/coins/{id}")
-    suspend fun getCoinById(@Path("id")id:String): Coin
+    suspend fun getCoinById(@Path("id")id:String): Response<Coin>
 
     @GET("/api/v3/coins/markets?vs_currency=usd&per_page=20")
     suspend fun getAllUsdCoins(): Response<List<CoinList>>

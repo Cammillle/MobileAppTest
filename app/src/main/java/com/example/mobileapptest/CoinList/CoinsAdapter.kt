@@ -1,16 +1,12 @@
 package com.example.mobileapptest.CoinList
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileapptest.Coin.Coin
 import com.example.mobileapptest.R
 import com.example.mobileapptest.databinding.RecyclerViewItemBinding
 import com.squareup.picasso.Picasso

@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.AbsListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +26,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var coinListViewModelUsd: CoinListUsdViewModel
      lateinit var coinListViewModelRub: CoinListRubViewModel
 
-    private lateinit var coinAdapter: CoinsAdapter
+    private lateinit var coinAdapterUsd: CoinsAdapter
+
+
 
     var isError = false
     var isLoading = false
@@ -41,8 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initAdapter()
-
+        initAdapterUsd()
 
 
         val repository = CoinRepository()
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                         hideProgressBar()
                         hideErrorMessage()
                         response.data?.let {
-                            coinAdapter.submitList(response.data)
+                            coinAdapterUsd.submitList(response.data)
                         }
                     }
                     is Resource.Error<*> -> {
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                         hideProgressBar()
                         hideErrorMessage()
                         response.data?.let {
-                            coinAdapter.submitList(response.data)
+                            coinAdapterUsd.submitList(response.data)
                         }
                     }
                     is Resource.Error<*> -> {
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        coinAdapter.setOnClickListener(object: CoinsAdapter.OnClickListener {
+        coinAdapterUsd.setOnClickListener(object: CoinsAdapter.OnClickListener {
             override fun onClick(position: Int, model: CoinList) {
                 val intent = Intent(this@MainActivity, CoinActivity::class.java)
                 intent.putExtra("id",model.id)
@@ -165,12 +165,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initAdapter(){
-        coinAdapter = CoinsAdapter()
-        binding.rcView.adapter = coinAdapter
+    private fun initAdapterUsd(){
+        coinAdapterUsd = CoinsAdapter()
+        binding.rcView.adapter = coinAdapterUsd
         binding.rcView.layoutManager = LinearLayoutManager(this)
         binding.rcView.addOnScrollListener(this@MainActivity.scrollListener)
     }
+
 
 
 
