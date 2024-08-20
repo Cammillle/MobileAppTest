@@ -1,23 +1,28 @@
-package com.example.mobileapptest
+package com.example.mobileapptest.CoinList
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileapptest.CoinList.CoinList
+import com.example.mobileapptest.Coin.Coin
+import com.example.mobileapptest.R
 import com.example.mobileapptest.databinding.RecyclerViewItemBinding
 import com.squareup.picasso.Picasso
 import kotlin.math.floor
 
-class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()) {
+class CoinsAdapter : ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()) {
     private var onClickListener: OnClickListener? = null
 
     class CoinsHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = RecyclerViewItemBinding.bind(view)
-        fun bind(coin: CoinList) = with(binding){
+
+        fun bind(coin: CoinList ) = with(binding){
             tvName.text = coin.name
             tvPrice.text = "$ "+coin.current_price.toString()
             tvSymbol.text= coin.symbol
@@ -29,6 +34,7 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
                 tvDuration.setTextColor(Color.RED)
             }
             Picasso.get().load(coin.image).into(ImageIcon)
+
         }
     }
 
@@ -46,7 +52,7 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
 
     }
 
-    fun setOnClickListener(listener:OnClickListener?){
+    fun setOnClickListener(listener: OnClickListener?){
         this.onClickListener = listener
     }
     // Interface for the click listener
@@ -55,7 +61,7 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
     }
 
 
-    class Comparator: DiffUtil.ItemCallback<CoinList>() {
+    class Comparator:DiffUtil.ItemCallback<CoinList>(){
         override fun areItemsTheSame(oldItem: CoinList, newItem: CoinList): Boolean {
             return oldItem.id == newItem.id
         }
@@ -64,4 +70,5 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
             return oldItem == newItem
         }
     }
+
 }

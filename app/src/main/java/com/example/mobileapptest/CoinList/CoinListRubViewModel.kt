@@ -7,7 +7,6 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mobileapptest.Coin.Coin
 import com.example.mobileapptest.repository.CoinRepository
 import com.example.mobileapptest.util.Resource
 import kotlinx.coroutines.launch
@@ -15,35 +14,29 @@ import retrofit2.Response
 import java.io.IOException
 
 
-class CoinListViewModel ( app: Application, val repository: CoinRepository) : AndroidViewModel(app){
+class CoinListRubViewModel (app: Application, val repository: CoinRepository) : AndroidViewModel(app){
 
     val coinsResponse:MutableLiveData<Resource<List<CoinList>>> = MutableLiveData()
-    var coinsPage = 1
-    var coins: List<CoinList>? = null
 
     init {
-        getCoinsByUsd()
-    }
-
-    fun getCoinsByUsd() = viewModelScope.launch {
-        internetConnectionForApi()
+        getCoinsByRub()
     }
 
     fun getCoinsByRub() = viewModelScope.launch {
         internetConnectionForApi()
     }
 
+
     private fun handleResponse(response: Response<List<CoinList>>):Resource<List<CoinList>>{
         if(response.isSuccessful){
-            response.body()?.let { resultRespones ->
-                coinsPage++
-                if(coins == null){
-                    coins = resultRespones
-                }
-                return Resource.Success(coins ?: resultRespones)
+            response.body()?.let { resultResponse ->
+                return Resource.Success(data = resultResponse)
             }
         }
         return Resource.Error(response.message())
+
+
+
     }
 
     fun internetConnection(context:Context) :Boolean{
@@ -63,7 +56,7 @@ class CoinListViewModel ( app: Application, val repository: CoinRepository) : An
         coinsResponse.postValue(Resource.Loading())
         try{
             if(internetConnection(this.getApplication())){
-                val response = repository.getAllUsdCoins()
+                val response = repository.getAllRubCoins()
                 coinsResponse.postValue(handleResponse(response))
             }else{
                 coinsResponse.postValue(Resource.Error("No internet Connection"))
@@ -75,7 +68,5 @@ class CoinListViewModel ( app: Application, val repository: CoinRepository) : An
 
             }
         }
-    }
-
-
+        }
 }

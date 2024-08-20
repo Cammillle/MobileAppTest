@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mobileapptest.repository.CoinRepository
 
-class CoinListViewModelProviderFactory(val app:Application, val repository: CoinRepository):ViewModelProvider.Factory {
+class CoinListViewModelProviderFactoryUsd(val app:Application, val repository: CoinRepository):ViewModelProvider.Factory {
     override fun<T: ViewModel> create(modelClass:Class<T>):T{
-        return CoinListViewModel(app, repository) as T
+        return CoinListUsdViewModel(app, repository) as T
     }
 
 

@@ -16,7 +16,7 @@ interface CoinGeckoApi {
     suspend fun getAllUsdCoins(): Response<List<CoinList>>
 
     @GET("/api/v3/coins/markets?vs_currency=rub&per_page=20")
-    suspend fun getAllRubCoins(): List<CoinList>
+    suspend fun getAllRubCoins(): Response<List<CoinList>>
 
 }
 

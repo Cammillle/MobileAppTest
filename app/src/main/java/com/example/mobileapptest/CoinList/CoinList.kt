@@ -11,3 +11,4 @@ data class CoinList(
     val current_price: Float,
     val market_cap_change_percentage_24h: Float
 )
+
