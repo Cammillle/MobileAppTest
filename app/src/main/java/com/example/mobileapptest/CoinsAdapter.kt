@@ -1,16 +1,13 @@
 package com.example.mobileapptest
 
-import android.content.Context
-import android.content.res.Resources
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileapptest.CoinList.CoinList
 import com.example.mobileapptest.databinding.RecyclerViewItemBinding
 import com.squareup.picasso.Picasso
 import kotlin.math.floor
@@ -20,7 +17,7 @@ class CoinsAdapter: ListAdapter<CoinList, CoinsAdapter.CoinsHolder>(Comparator()
 
     class CoinsHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = RecyclerViewItemBinding.bind(view)
-        fun bind(coin:CoinList) = with(binding){
+        fun bind(coin: CoinList) = with(binding){
             tvName.text = coin.name
             tvPrice.text = "$ "+coin.current_price.toString()
             tvSymbol.text= coin.symbol

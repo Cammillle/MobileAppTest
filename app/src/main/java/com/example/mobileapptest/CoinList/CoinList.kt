@@ -1,4 +1,4 @@
-package com.example.mobileapptest
+package com.example.mobileapptest.CoinList
 
 import com.example.mobileapptest.Coin.Description
 

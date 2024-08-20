@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 
 }
 
@@ -63,7 +64,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
+    implementation("com.google.dagger:hilt-android:2.44")
+    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
 
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
 
 }
+

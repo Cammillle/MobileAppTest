@@ -1,14 +1,9 @@
-package com.example.mobileapptest.activities
+package com.example.mobileapptest.ui.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.mobileapptest.Coin.Coin
-import com.example.mobileapptest.CoinGeckoApi
-import com.example.mobileapptest.MainActivity
-import com.example.mobileapptest.R
+import com.example.mobileapptest.api.CoinGeckoApi
 import com.example.mobileapptest.databinding.ActivityCoinBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class CoinActivity : AppCompatActivity() {
     lateinit var binding: ActivityCoinBinding
